@@ -17,10 +17,12 @@ products = driver.find_element(By.XPATH, "/html/body/section[2]/div[1]/div/div[2
 assert "all products" in products.lower()
 print("all products page")
 
-driver.find_element(By.XPATH, "/html/body/section[2]/div[1]/div/div[2]/div/div[2]/div/div[2]/ul/li/a").click()
-time.sleep(1)
-product = driver.find_element(By.XPATH, "/html/body/section/div/div/div[2]/div[2]/div[2]/div/h2").text
-assert "blue top" in product.lower()
-print("product")
 
-time.sleep(5)
+driver.find_element(By.XPATH, "/html/body/section[1]/div/input").send_keys("Blue Top")
+driver.find_element(By.ID, "submit_search").click()
+time.sleep(2)
+
+searched = driver.find_element(By.XPATH, "/html/body/section[2]/div[1]/div/div[2]/div/h2").text
+assert "searched products" in searched.lower()
+print("searched products verify")
+time.sleep(3)
